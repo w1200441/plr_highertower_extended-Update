@@ -13,7 +13,7 @@ public Plugin myinfo =
 	name = "plr_highertower_extended Map glitch fixed",
 	author = "w1200441",
 	description = "plr_highertower_extended red spawnroom fix. increase telefrag damage in x1000 mode",
-	version = "0.0.4",
+	version = "0.0.5",
 	url = "https://steamcommunity.com/id/w1200441/"
 };
 public void OnPluginStart()
@@ -141,6 +141,18 @@ public Action BuildEntity(Handle timer)
 		DispatchKeyValue(prop, "angles", "76 263 173");
 		DispatchKeyValue(prop, "solid", "6");
 		DispatchSpawn(prop);
+	}
+	prop = CreateEntityByName("prop_dynamic");
+	if (IsValidEntity(prop))
+	{
+		DispatchKeyValue(prop, "targetname", "MapEntity");
+		DispatchKeyValue(prop, "model", "models/props_farm/fence_metal01a.mdl");
+		DispatchKeyValue(prop, "origin", "-3630 -4314 -3980");
+		DispatchKeyValue(prop, "angles", "5 266 -20");
+		DispatchKeyValue(prop, "solid", "6");
+		DispatchSpawn(prop);
+		SetEntityRenderMode(prop, RENDER_TRANSCOLOR);
+		SetEntityRenderColor(prop, 255, 255, 255, 0);
 	}
 	return Plugin_Stop;
 }
